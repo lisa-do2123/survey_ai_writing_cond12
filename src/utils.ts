@@ -2,7 +2,7 @@
 
 export const API_BASE =
   (import.meta.env.VITE_API_BASE as string | undefined)?.trim() ||
-  "http://localhost:3001";
+  "https://survey-ai-writing.onrender.com";
 
 export function now() {
   return Date.now();
