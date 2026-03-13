@@ -97,28 +97,6 @@ export default function App() {
   sessionStorage.setItem("survey_step", String(step));
 }, [step]);
 
-  const ensureParticipant = async () => {
-    const existing = sessionStorage.getItem("participant_id");
-    if (existing) return existing;
-
-    const r = await fetch(`${API_BASE}/api/participants`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ condition_code: condition }),
-    });
-
-    const d = await r.json();
-
-    if (!d?.participant_id) {
-      throw new Error("No participant_id returned");
-    }
-
-    sessionStorage.setItem("participant_id", d.participant_id);
-    return d.participant_id as string;
-  };
-
   const syncToWideTable = async (payload: Record<string, any>) => {
     const participant_id = sessionStorage.getItem("participant_id");
     if (!participant_id) return;
