@@ -1,6 +1,7 @@
 // src/pages/AuthorshipPage.tsx
 import { useMemo, useState } from "react";
 import type { SurveyData } from "../types";
+import { API_BASE } from "../utils";
 
 type SetDataLike = (
   updater: SurveyData | ((prev: SurveyData) => SurveyData)
@@ -59,7 +60,7 @@ export default function AuthorshipPage(props: {
         authorship_explanation: props.data.authorship.reason ?? "",
       };
 
-      const res = await fetch("/api/survey/update", {
+      const res = await fetch(`${API_BASE}/api/survey/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

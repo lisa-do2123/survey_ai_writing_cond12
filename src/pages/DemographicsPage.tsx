@@ -2,6 +2,7 @@
 import { useState } from "react";
 import type { SurveyData } from "../types";
 import { zh } from "../surveyContentZh";
+import { API_BASE } from "../utils";
 
 type SetDataLike = (
   updater: SurveyData | ((prev: SurveyData) => SurveyData)
@@ -52,7 +53,7 @@ export default function DemographicsPage(props: {
         open_ended_feedback: d.openEnded ?? "",
       };
 
-      const res = await fetch("/api/survey/update", {
+      const res = await fetch(`${API_BASE}/api/survey/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

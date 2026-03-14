@@ -3,6 +3,7 @@ import { useState } from "react";
 import LikertBlock from "../components/LikertBlock";
 import { zh } from "../surveyContentZh";
 import type { Likert, SurveyData } from "../types";
+import { API_BASE } from "../utils";
 
 export default function PostGroupPageB(props: {
   data: SurveyData;
@@ -55,7 +56,7 @@ export default function PostGroupPageB(props: {
         ),
       };
 
-      const res = await fetch("/api/survey/update", {
+      const res = await fetch(`${API_BASE}/api/survey/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
